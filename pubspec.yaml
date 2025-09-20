@@ -1,5 +1,5 @@
 name: event_planner
-description: "A new Flutter project."
+description: "This project is owned by Matheus Kikumori & CJSP"
 publish_to: 'none'
 version: 0.1.0
 
@@ -13,7 +13,21 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+
+  cupertino_icons: 
+  provider: 
+  flutter_lints: 
+  firebase_auth: 
+  cloud_firestore: 
+  firebase_core:
+  firebase_storage: 
+  image_picker: 
+  shared_preferences:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/animations/music_icon.gif
+    - assets/images/clave_de_sol.jpg
+  

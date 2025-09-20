@@ -51,7 +51,7 @@ lib/
 │   │   ├── application_read.dart   # Application read view
 │   │   ├── application_edit.dart   # Application edit view
 │   │   └── application_create.dart # Application create view
-├── widgets/               # Reusable UI components
+└── widgets/               # Reusable UI components
     ├── custom_button.dart # Reusable button widget
     ├── custom_text_field.dart # Reusable text field widget
     └── loading_indicator.dart  # Loading spinner widget
