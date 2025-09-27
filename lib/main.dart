@@ -2,6 +2,7 @@ import 'package:event_planner/view/launch/launch_view.dart';
 import 'package:event_planner/view_model/auth/login_viewmodel.dart';
 import 'package:event_planner/view_model/auth/password_reset_viewmodel.dart';
 import 'package:event_planner/view_model/auth/registration_viewmodel.dart';
+import 'package:event_planner/view_model/core/home_viewmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:event_planner/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
@@ -25,6 +26,8 @@ class MainApp extends StatelessWidget {
                 ChangeNotifierProvider(create: (_) => ThemeProvider()),
                 ChangeNotifierProvider(create: (_) => LoginViewModel()),
                 ChangeNotifierProvider(create: (_) => RegistrationViewModel()),
+                ChangeNotifierProvider(create: (_) => HomeViewModel()),
+                ChangeNotifierProvider(create: (_) => PasswordResetViewModel()),
               ],
               child: Consumer<ThemeProvider>(
                 builder: (context, themeProvider, child) {
