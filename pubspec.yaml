@@ -30,4 +30,5 @@ flutter:
   assets:
     - assets/animations/music_icon.gif
     - assets/images/clave_de_sol.jpg
+    - assets/images/profile_pic_placeholder.jpg
   
