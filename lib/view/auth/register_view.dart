@@ -88,6 +88,24 @@ class RegisterView extends StatelessWidget {
                 onChanged: viewModel.setPassword,
               ),
               CustomTextfieldErrorWidget(error: viewModel.passwordError),
+              const SizedBox(height: 16),
+              CupertinoSegmentedControl<String>(
+                groupValue: viewModel.role,
+                children: const {
+                  'infanto': Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    child: Text('Infanto'),
+                  ),
+                  'jovem': Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    child: Text('Jovem'),
+                  ),
+                },
+                onValueChanged: (value) {
+                  viewModel.setRole(value);
+                  print('Selected role: $value');
+                },
+              ),
               const SizedBox(height: 24),
               CustomButtonWidget(
                 text: 'Continuar',
@@ -99,6 +117,7 @@ class RegisterView extends StatelessWidget {
                   final email = emailController.text.trim();
                   final phone = phoneController.text.trim();
                   final password = passwordController.text.trim();
+                  final role = viewModel.role;
                   final model = Provider.of<RegistrationViewModel>(context,
                       listen: false);
 
@@ -109,6 +128,7 @@ class RegisterView extends StatelessWidget {
                     email: email.isEmpty ? 'Email is required.' : null,
                     phone: phone.isEmpty ? 'Phone is required.' : null,
                     password: password.isEmpty ? 'Password is required.' : null,
+                    role: role == null ? 'Role is required.' : null,
                   );
 
                   final hasError = [
@@ -117,6 +137,7 @@ class RegisterView extends StatelessWidget {
                     model.emailError,
                     model.phoneError,
                     model.passwordError,
+                    model.roleError,
                   ].any((e) => e != null);
 
                   if (hasError) return;
@@ -127,6 +148,7 @@ class RegisterView extends StatelessWidget {
                     email: email,
                     phoneNumber: phone,
                     password: password,
+                    role: role!,
                   );
 
                   await model.register(
@@ -196,12 +218,7 @@ class CountryCodeSelector extends StatelessWidget {
         ],
         cancelButton: CupertinoActionSheetAction(
           child: const Text('Cancel'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              CupertinoPageRoute(builder: (_) => const RegisterView()),
-            );
-          },
+          onPressed: () => Navigator.pop(context),
         ),
       ),
     );

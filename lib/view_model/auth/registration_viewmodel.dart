@@ -17,6 +17,7 @@ class RegistrationViewModel extends ChangeNotifier {
   String? _password;
   String? _phoneNumber;
   String? _uid;
+  String? _role;
 
   String? _selectedCountryCode = '+55';
 
@@ -25,6 +26,7 @@ class RegistrationViewModel extends ChangeNotifier {
   String? _emailError;
   String? _phoneError;
   String? _passwordError;
+  String? _roleError;
 
   // --- Getters ---
   bool get isLoading => _isLoading;
@@ -35,6 +37,7 @@ class RegistrationViewModel extends ChangeNotifier {
   String? get email => _email;
   String? get phoneNumber => _phoneNumber;
   String? get uid => _uid;
+  String? get role => _role;
   String? get selectedCountryCode => _selectedCountryCode;
 
   String? get firstNameError => _firstNameError;
@@ -42,26 +45,7 @@ class RegistrationViewModel extends ChangeNotifier {
   String? get emailError => _emailError;
   String? get phoneError => _phoneError;
   String? get passwordError => _passwordError;
-
-  /*
-  String? get formattedPhoneNumber {
-    if (_phoneNumber == null || _selectedCountryCode == null) return null;
-
-    final original = _phoneNumber!.trim();
-    var cleaned = original;
-
-    if (cleaned.startsWith('0')) {
-      cleaned = cleaned.substring(1);
-    }
-
-    final result = '$_selectedCountryCode$cleaned';
-
-    print('📱 Original phone: $original');
-    print('✅ Formatted phone: $result');
-
-    return result;
-  }
-  */
+  String? get roleError => _roleError;
 
   // --- Setters ---
   void setSelectedCountryCode(String code) {
@@ -89,18 +73,25 @@ class RegistrationViewModel extends ChangeNotifier {
     _password = value;
   }
 
+  void setRole(String value) {
+    _role = value;
+    notifyListeners();
+  }
+
   void setUserInfo({
     required String firstName,
     required String lastName,
     required String email,
     required String password,
     required String phoneNumber,
+    required String role,
   }) {
     _firstName = firstName;
     _lastName = lastName;
     _email = email;
     _password = password;
     _phoneNumber = phoneNumber;
+    _role = role;
     notifyListeners();
   }
 
@@ -128,6 +119,7 @@ class RegistrationViewModel extends ChangeNotifier {
     _emailError = null;
     _phoneError = null;
     _passwordError = null;
+    _roleError = null;
     notifyListeners();
   }
 
@@ -137,11 +129,13 @@ class RegistrationViewModel extends ChangeNotifier {
     String? email,
     String? phone,
     String? password,
+    String? role,
   }) {
     _firstNameError = firstName;
     _lastNameError = lastName;
     _emailError = email;
     _phoneError = phone;
+    _role = role;
     _passwordError = password;
     notifyListeners();
   }
@@ -161,6 +155,7 @@ class RegistrationViewModel extends ChangeNotifier {
         email: _email!,
         firstName: _firstName!,
         lastName: _lastName!,
+        role: _role!,
       );
 
       Navigator.push(

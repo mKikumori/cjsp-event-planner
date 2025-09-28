@@ -103,7 +103,7 @@ class _HomeViewState extends State<HomeView> {
                       category: 'MPB',
                       remarks: 'Quero tocar essa música!',
                       totalMembers: 4,
-                      intrumentsList: [
+                      intrumentsListTotal: [
                         'Guitarra',
                         'Bateria',
                         'Piano',
@@ -136,7 +136,7 @@ class _HomeViewState extends State<HomeView> {
                       category: 'Eletrônica',
                       remarks: 'Animar a galera!',
                       totalMembers: 5,
-                      intrumentsList: [
+                      intrumentsListTotal: [
                         'Guitarra',
                         'Microfone',
                         'Piano',

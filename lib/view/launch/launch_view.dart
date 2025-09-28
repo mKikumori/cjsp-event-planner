@@ -40,7 +40,7 @@ class LaunchView extends StatelessWidget {
                 letterSpacing: -0.5,
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 35),
             // Subtitle Text
             Text(
               'Organize your events effortlessly',

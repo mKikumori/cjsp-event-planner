@@ -32,14 +32,14 @@ class UserService {
     required String email,
     required String firstName,
     required String lastName,
+    required String role,
   }) async {
     try {
       final now = FieldValue.serverTimestamp();
       await _firestore.collection('userprofiles').doc(uid).set({
         'email': email,
-        'display_name': null,
         'photo_url': null,
-        'role': 'member',
+        'role': role,
         'first_name': firstName,
         'last_name': lastName,
         'favorite_ids': <String>[],

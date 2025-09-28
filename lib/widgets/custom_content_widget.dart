@@ -15,7 +15,11 @@ class CustomContentWidget extends StatelessWidget {
   final String remarks;
   final int totalMembers;
   final List?
-      intrumentsList; // List of instruments that will need to be used but User doesn't play or have
+      intrumentsListTotal; // List of instruments that will need to be used
+  final List?
+      intrumentsListPayed; // List of instruments that will need to be used and the User play
+  final List?
+      intrumentsListOwned; // List of instruments that will need to be used and User own
   final String timeFrame; // at the start, middle or end
   final bool seekingMembers;
   final String status; // Just started, Rehearsing. almost done, ready
@@ -36,7 +40,9 @@ class CustomContentWidget extends StatelessWidget {
     required this.category,
     required this.remarks,
     required this.totalMembers,
-    this.intrumentsList,
+    this.intrumentsListTotal,
+    this.intrumentsListPayed,
+    this.intrumentsListOwned,
     required this.timeFrame,
     required this.seekingMembers,
     required this.status,
