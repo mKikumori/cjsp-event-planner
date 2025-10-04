@@ -71,11 +71,13 @@ class _GlobalNavigationBarState extends State<GlobalNavigationBar> {
       case 0:
         return const HomeView();
       /*case 1:
-        return const SpotlightView();
+        return const CreateEventView();
       case 2:
-        return const CreateView();
+        return const SearchView();
       case 3:
-        return const WisdomView();*/
+        return const FavView();
+      case 4:
+        return const CalendarView();*/
       default:
         return const HomeView();
     }

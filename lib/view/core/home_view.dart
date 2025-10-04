@@ -108,6 +108,13 @@ class _HomeViewState extends State<HomeView> {
                         'Bateria',
                         'Piano',
                       ],
+                      intrumentsListPayed: [
+                        'Guitarra',
+                      ],
+                      intrumentsListOwned: [
+                        'Guitarra',
+                        'Bateria',
+                      ],
                       timeFrame: 'No Final',
                       seekingMembers: true,
                       status: 'Organizando',
@@ -141,6 +148,8 @@ class _HomeViewState extends State<HomeView> {
                         'Microfone',
                         'Piano',
                       ],
+                      intrumentsListOwned: ['Guitarra', 'Bateria'],
+                      intrumentsListPayed: ['Guitarra', 'Microfone'],
                       timeFrame: 'No Começo',
                       seekingMembers: true,
                       status: 'Ensaiando',

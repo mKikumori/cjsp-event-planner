@@ -1,19 +1,25 @@
+import 'package:event_planner/view/settings/profile_view.dart';
+import 'package:event_planner/widgets/row_item_widget.dart';
 import 'package:flutter/cupertino.dart';
 
 class CustomRowSliderWidget extends StatelessWidget {
   final String title;
-  final int memberId;
+  final int contentTypeToggle;
+  final String rowId;
   final List<Map<String, dynamic>> items;
+  final bool instruments;
   final void Function(int index, Map<String, dynamic> item) onCardTap;
-  final void Function(int memberId) onSeeMoreTap;
+  final void Function(int contentId) onSeeMoreTap;
 
   const CustomRowSliderWidget({
     Key? key,
     required this.title,
-    required this.memberId,
+    required this.contentTypeToggle,
     required this.items,
     required this.onCardTap,
     required this.onSeeMoreTap,
+    this.instruments = false,
+    required this.rowId,
   }) : super(key: key);
 
   @override
@@ -52,59 +58,37 @@ class CustomRowSliderWidget extends StatelessWidget {
           SizedBox(
             height: 156,
             child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: displayCount,
-              itemBuilder: (context, index) {
-                if (index < 5) {
+                scrollDirection: Axis.horizontal,
+                itemCount: displayCount,
+                itemBuilder: (context, index) {
                   final item = items[index];
 
-                  /*return Padding(
+                  return Padding(
                     padding:
                         EdgeInsets.only(right: 12, left: index == 0 ? 16 : 0),
-                    child: RowItemWidget(
-                      imagePath: item['thumbnail'] as String? ?? '',
-                      contentId: item['id'] as String? ?? '',
-                      type: item['type'] as String? ?? 'unknown',
-                      onTap: () {
-                        onCardTap(index, item);
-                        Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                              builder: (context) =>
-                                  MemberView(contentId: item['id'])),
-                        );
-                      },
-                    ),
-                  );*/
-                }
-
-                // See More button
-                return Padding(
-                  padding: const EdgeInsets.only(right: 16),
-                  child: CupertinoButton(
-                    padding: EdgeInsets.zero,
-                    onPressed: () => onSeeMoreTap(memberId),
-                    child: Container(
-                      width: 156,
-                      height: 156,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: CupertinoColors.systemGrey.withOpacity(0.4),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: const Text(
-                        "Veja Mais",
-                        style: TextStyle(
-                          color: CupertinoColors.white,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 17,
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
+                    child: instruments
+                        ? RowItemWidget(
+                            imagePath: '',
+                            itemId: rowId,
+                            type: 'instrument',
+                            onTap: () {},
+                          )
+                        : RowItemWidget(
+                            itemId: rowId,
+                            imagePath: item['photo_url'] as String? ?? '',
+                            type: item['role'] as String? ?? '',
+                            onTap: () {
+                              onCardTap(index, item);
+                              Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                    builder: (context) =>
+                                        ProfileView(userId: item['uid'])),
+                              );
+                            },
+                          ),
+                  );
+                }),
           ),
       ],
     );
